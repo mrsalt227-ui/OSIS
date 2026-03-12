@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSIS SMPIT Insan Permata - Dynamic Mode</title>
+    <title>OSIS SMPIT Insan Permata - Fixed Structure</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #2563eb; --secondary: #1e293b; --light: #f8fafc; --dark: #0f172a; --danger: #ef4444; }
@@ -13,93 +13,131 @@
         nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         nav h1 { font-size: 1.1rem; color: var(--primary); font-weight: 800; }
         
-        header { height: 25vh; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1523050853063-915894612264?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; }
+        header { height: 20vh; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1523050853063-915894612264?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; }
 
         section { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
         .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
         h3 { margin-bottom: 25px; color: var(--primary); border-left: 5px solid var(--primary); padding-left: 15px; }
 
-        /* Grid Struktur */
-        .struktur-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        /* Struktur Grid */
+        .grid-inti { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .grid-sekbid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
         .member-card { background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; }
-        .role-tag { color: var(--primary); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; }
-        .name-tag { font-weight: 700; color: var(--secondary); font-size: 1rem; margin-bottom: 5px; }
-        .members-area { font-size: 0.85rem; color: #64748b; border-top: 1px dashed #cbd5e1; margin-top: 8px; padding-top: 8px; }
+        .role-tag { color: var(--primary); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .name-tag { font-weight: 700; color: var(--secondary); font-size: 1rem; }
+        
+        /* Area Anggota (Dinamis dari Firebase) */
+        .members-area { font-size: 0.85rem; color: #64748b; border-top: 1px dashed #cbd5e1; margin-top: 10px; padding-top: 10px; }
+        .members-area ul { list-style: none; padding-left: 5px; }
+        .members-area li::before { content: "• "; color: var(--primary); }
 
         /* Admin UI */
+        input, textarea, select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
+        button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
         #admin-panel { display: none; background: #fff; border: 2px solid var(--primary); padding: 20px; border-radius: 15px; }
         .admin-box { background: #f1f5f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
-        input, textarea, select { width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ddd; border-radius: 8px; }
-        button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
-        .btn-red { background: var(--danger); }
-
-        .announcement-item { border-bottom: 1px solid #eee; padding: 15px 0; }
     </style>
 </head>
 <body>
 
 <nav><h1>OSIS SMPIT IP</h1></nav>
 
-<header>
-    <h2>Dashboard Organisasi</h2>
-</header>
+<header><h2>Struktur Organisasi</h2></header>
 
-<section id="struktur-display">
-    <h3>Struktur Organisasi (Update Realtime)</h3>
-    <div id="display-grid" class="struktur-grid">
-        <p>Loading data pengurus...</p>
+<section id="struktur">
+    <h3>Pengurus Inti</h3>
+    <div class="grid-inti">
+        <div class="member-card">
+            <span class="role-tag">Ketua Umum</span>
+            <p class="name-tag">Tsabit</p>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Wakil Ketua</span>
+            <p class="name-tag">[Nama Wakil]</p>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekretaris 1</span>
+            <p class="name-tag">[Nama Sekretaris 1]</p>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekretaris 2</span>
+            <p class="name-tag">[Nama Sekretaris 2]</p>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Bendahara 1</span>
+            <p class="name-tag">[Nama Bendahara 1]</p>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Bendahara 2</span>
+            <p class="name-tag">[Nama Bendahara 2]</p>
+        </div>
+    </div>
+
+    <h3>Seksi Bidang (Sekbid)</h3>
+    <div class="grid-sekbid">
+        <div class="member-card">
+            <span class="role-tag">Sekbid 1: Keagamaan</span>
+            <p class="name-tag">[Koordinator 1]</p>
+            <div id="data-sekbid1" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekbid 2: Budi Pekerti</span>
+            <p class="name-tag">[Koordinator 2]</p>
+            <div id="data-sekbid2" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekbid 3: Kenegaraan</span>
+            <p class="name-tag">[Koordinator 3]</p>
+            <div id="data-sekbid3" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekbid 4: Seni & Olahraga</span>
+            <p class="name-tag">[Koordinator 4]</p>
+            <div id="data-sekbid4" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekbid 5: Demokrasi</span>
+            <p class="name-tag">[Koordinator 5]</p>
+            <div id="data-sekbid5" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
+        <div class="member-card">
+            <span class="role-tag">Sekbid 6: Teknologi & Informasi</span>
+            <p class="name-tag">[Koordinator 6]</p>
+            <div id="data-sekbid6" class="members-area"><ul><li>Memuat anggota...</li></ul></div>
+        </div>
     </div>
 </section>
 
-<section id="pengumuman">
-    <h3>Pengumuman</h3>
-    <div id="announcement-list" class="card"></div>
-</section>
-
 <section id="admin">
-    <h3>Admin Control</h3>
     <div class="card">
+        <h3>Admin Panel</h3>
         <div id="login-form">
-            <input type="password" id="admin-pass" placeholder="Password Admin">
+            <input type="password" id="admin-pass" placeholder="Password">
             <button onclick="login()">Login</button>
         </div>
-
         <div id="admin-panel">
             <div class="admin-box">
-                <h4>Update Nama Pengurus</h4>
-                <select id="select-jabatan">
-                    <option value="ketua">Ketua Umum</option>
-                    <option value="wakil">Wakil Ketua</option>
-                    <option value="sekretaris1">Sekretaris 1</option>
-                    <option value="sekretaris2">Sekretaris 2</option>
-                    <option value="bendahara1">Bendahara 1</option>
-                    <option value="bendahara2">Bendahara 2</option>
-                    <option value="sekbid1">Sekbid 1 (Agama)</option>
-                    <option value="sekbid2">Sekbid 2 (Budi Pekerti)</option>
-                    <option value="sekbid3">Sekbid 3 (Negara)</option>
-                    <option value="sekbid4">Sekbid 4 (Seni/Olahraga)</option>
-                    <option value="sekbid5">Sekbid 5 (Demokrasi)</option>
-                    <option value="sekbid6">Sekbid 6 (TI)</option>
+                <h4>Update Anggota Sekbid</h4>
+                <select id="select-sekbid">
+                    <option value="sekbid1">Sekbid 1</option>
+                    <option value="sekbid2">Sekbid 2</option>
+                    <option value="sekbid3">Sekbid 3</option>
+                    <option value="sekbid4">Sekbid 4</option>
+                    <option value="sekbid5">Sekbid 5</option>
+                    <option value="sekbid6">Sekbid 6</option>
                 </select>
-                <input type="text" id="input-nama-inti" placeholder="Nama Ketua/Koordinator">
-                <textarea id="input-anggota" placeholder="Nama Anggota (pisahkan dengan koma , )"></textarea>
-                <button onclick="updateStruktur()">Update Struktur</button>
+                <textarea id="input-anggota" placeholder="Nama anggota (pisahkan dengan koma , )"></textarea>
+                <button onclick="saveMembers()">Simpan Anggota</button>
             </div>
-
-            <div class="admin-box">
-                <h4>Buat Pengumuman</h4>
-                <input type="text" id="ann-title" placeholder="Judul">
-                <textarea id="ann-content" placeholder="Isi..."></textarea>
-                <button onclick="addAnnouncement()">Posting</button>
-            </div>
-            <button onclick="logout()" class="btn-red">Logout</button>
+            <button onclick="logout()" style="background:#64748b">Logout</button>
         </div>
     </div>
 </section>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, set, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyA5juE6fF_q6HidTqrlc64H7BOrH6_pSbg",
@@ -114,66 +152,33 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // LOGIN SYSTEM
     window.login = () => {
         if(document.getElementById('admin-pass').value === "adminosis") {
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('admin-panel').style.display = 'block';
-        } else alert("Salah Bos!");
-    };
-
-    // UPDATE STUKTUR KE DATABASE
-    window.updateStruktur = () => {
-        const jabatan = document.getElementById('select-jabatan').value;
-        const nama = document.getElementById('input-nama-inti').value;
-        const anggota = document.getElementById('input-anggota').value;
-
-        set(ref(db, 'struktur/' + jabatan), {
-            nama: nama,
-            list_anggota: anggota
-        }).then(() => alert("Struktur Terupdate!"));
-    };
-
-    // LOAD STRUKTUR SECARA REALTIME
-    onValue(ref(db, 'struktur'), (snapshot) => {
-        const data = snapshot.val();
-        const grid = document.getElementById('display-grid');
-        grid.innerHTML = "";
-        
-        if(!data) return grid.innerHTML = "Belum ada data pengurus.";
-
-        for(let key in data) {
-            const item = data[key];
-            const anggotaArr = item.list_anggota ? item.list_anggota.split(',') : [];
-            let listHtml = "";
-            anggotaArr.forEach(a => { if(a.trim()) listHtml += `<li>${a.trim()}</li>`; });
-
-            grid.innerHTML += `
-                <div class="member-card">
-                    <span class="role-tag">${key.toUpperCase()}</span>
-                    <p class="name-tag">${item.nama}</p>
-                    <div class="members-area"><ul>${listHtml}</ul></div>
-                </div>
-            `;
         }
-    });
-
-    // PENGUMUMAN (Tetap sama seperti sebelumnya)
-    window.addAnnouncement = () => {
-        const t = document.getElementById('ann-title').value;
-        const c = document.getElementById('ann-content').value;
-        push(ref(db, 'pengumuman'), { judul: t, isi: c, waktu: Date.now() });
     };
 
-    onValue(ref(db, 'pengumuman'), (snapshot) => {
-        const list = document.getElementById('announcement-list');
-        list.innerHTML = "";
+    window.saveMembers = () => {
+        const id = document.getElementById('select-sekbid').value;
+        const val = document.getElementById('input-anggota').value;
+        set(ref(db, 'sekbid_members/' + id), val).then(() => alert("Berhasil diupdate!"));
+    };
+
+    // Ambil data anggota saja
+    onValue(ref(db, 'sekbid_members'), (snapshot) => {
         const data = snapshot.val();
-        if(data) {
-            Object.keys(data).reverse().forEach(id => {
-                const p = data[id];
-                list.innerHTML += `<div class="announcement-item"><h4>${p.judul}</h4><p>${p.isi}</p></div>`;
-            });
+        if(!data) return;
+        
+        for(let i=1; i<=6; i++) {
+            const key = 'sekbid' + i;
+            const container = document.querySelector(`#data-${key} ul`);
+            if(data[key]) {
+                const names = data[key].split(',');
+                container.innerHTML = names.map(n => `<li>${n.trim()}</li>`).join('');
+            } else {
+                container.innerHTML = "<li>Belum ada anggota</li>";
+            }
         }
     });
 </script>
