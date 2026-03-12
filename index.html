@@ -6,147 +6,316 @@
     <title>OSIS SMPIT Insan Permata Malang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --secondary: #1e293b; --accent: #3b82f6; --light: #f8fafc; --dark: #0f172a; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
-        nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
         nav h1 { font-size: 1.2rem; color: var(--primary); font-weight: 800; }
+
         nav ul { display: flex; list-style: none; gap: 20px; }
-        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; transition: 0.3s; }
-        header { height: 40vh; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1523050853063-915894612264?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        section { padding: 40px 10%; }
-        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        h3 { margin-bottom: 20px; color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
-        button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        button:hover { background: var(--accent); }
-        .announcement-item { border-bottom: 1px solid #eee; padding: 15px 0; position: relative; }
-        #admin-panel { display: none; margin-top: 20px; border: 2px dashed var(--primary); padding: 20px; border-radius: 15px; }
-        .btn-delete { background: #ef4444; padding: 5px 10px; font-size: 0.8rem; margin-top: 10px; }
-        footer { text-align: center; padding: 40px; background: var(--secondary); color: white; margin-top: 50px; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        /* --- Header --- */
+        header {
+            height: 40vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h2 { font-size: 2.2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Main Content --- */
+        section { padding: 40px 10%; max-width: 1200px; margin: 0 auto; }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h3 { 
+            margin-bottom: 20px; 
+            color: var(--primary); 
+            border-left: 5px solid var(--primary); 
+            padding-left: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- Forms --- */
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus { border-color: var(--primary); ring: 2px var(--primary); }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover { background: var(--accent); transform: translateY(-2px); }
+
+        /* --- Announcement Items --- */
+        .announcement-item {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 20px 0;
+            transition: 0.2s;
+        }
+
+        .announcement-item:last-child { border: none; }
+
+        .ann-meta { font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-bottom: 5px; display: block; }
+
+        .ann-title { font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 8px; }
+
+        .ann-content { color: #475569; font-size: 1rem; }
+
+        /* --- Admin Panel --- */
+        #admin-panel { display: none; margin-top: 20px; background: #f8fafc; border: 2px dashed #cbd5e1; padding: 25px; border-radius: 15px; }
+
+        .btn-delete { background: var(--danger); padding: 6px 12px; font-size: 0.8rem; margin-top: 15px; }
+
+        .btn-logout { background: #64748b; margin-left: 10px; }
+
+        footer { text-align: center; padding: 40px; background: var(--secondary); color: white; margin-top: 60px; }
+
+        @media (max-width: 768px) {
+            section { padding: 30px 5%; }
+            nav ul { display: none; }
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <h1>OSIS SMPIT IP</h1>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#pengumuman">Pengumuman</a></li>
-        <li><a href="#admin">Admin</a></li>
-    </ul>
-</nav>
+    <nav>
+        <h1>OSIS SMPIT IP</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#pengumuman">Pengumuman</a></li>
+            <li><a href="#admin">Admin</a></li>
+        </ul>
+    </nav>
 
-<header id="home">
-    <h2>OSIS SMPIT INSAN PERMATA</h2>
-    <p>Real-time Dashboard - 7 Ali Edition</p>
-</header>
+    <header id="home">
+        <h2>OSIS SMPIT Insan Permata</h2>
+        <p>Dashboard Informasi Terintegrasi Cloud</p>
+    </header>
 
-<section id="pengumuman">
-    <h3>Pengumuman Terbaru</h3>
-    <div id="announcement-list" class="card">
-        <p>Menghubungkan ke database...</p>
-    </div>
-</section>
-
-<section id="admin">
-    <h3>Login Admin</h3>
-    <div class="card">
-        <div id="login-form">
-            <input type="password" id="admin-pass" placeholder="Password Admin">
-            <button onclick="login()">Login</button>
+    <section id="pengumuman">
+        <h3>📢 Pengumuman Terbaru</h3>
+        <div id="announcement-list" class="card">
+            <p style="text-align: center; color: #94a3b8;">Sedang memuat pengumuman dari database...</p>
         </div>
-        <div id="admin-panel">
-            <h4>Dashboard Konten</h4>
-            <input type="text" id="ann-title" placeholder="Judul Pengumuman">
-            <textarea id="ann-content" placeholder="Isi Pengumuman..." rows="4"></textarea>
-            <button onclick="addAnnouncement()">Posting ke Firebase</button>
-            <button onclick="logout()" style="background:#64748b; margin-left:10px;">Keluar</button>
+    </section>
+
+    <section id="admin">
+        <h3>🔐 Dashboard Admin</h3>
+        <div class="card">
+            <div id="login-form">
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Khusus pengurus OSIS untuk mengelola konten.</p>
+                <input type="password" id="admin-pass" placeholder="Masukkan Password Admin">
+                <button onclick="login()">Buka Akses</button>
+            </div>
+
+            <div id="admin-panel">
+                <h4 style="margin-bottom: 15px;">Buat Pengumuman Baru</h4>
+                <input type="text" id="ann-title" placeholder="Judul Pengumuman (Contoh: Jadwal Rapat)">
+                <textarea id="ann-content" placeholder="Tulis isi pengumuman secara detail di sini..." rows="5"></textarea>
+                <button onclick="addAnnouncement()">🚀 Posting Sekarang</button>
+                <button onclick="logout()" class="btn-logout">Keluar</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>&copy; 2026 OSIS SMPIT Insan Permata Malang</p>
-</footer>
+    <footer>
+        <p>&copy; 2026 OSIS SMPIT Insan Permata Malang | Built by Kelas 7 Ali</p>
+    </footer>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    // Firebase Config BOSKUH
-    const firebaseConfig = {
-        apiKey: "AIzaSyA5juE6fF_q6HidTqrlc64H7BOrH6_pSbg",
-        authDomain: "osis-smpit.firebaseapp.com",
-        projectId: "osis-smpit",
-        storageBucket: "osis-smpit.firebasestorage.app",
-        messagingSenderId: "498358786234",
-        appId: "1:498358786234:web:ba15552c31828d7991ca83",
-        measurementId: "G-SPQJXP82E2"
-    };
+        // Konfigurasi Firebase BOSKUH
+        const firebaseConfig = {
+            apiKey: "AIzaSyA5juE6fF_q6HidTqrlc64H7BOrH6_pSbg",
+            authDomain: "osis-smpit.firebaseapp.com",
+            databaseURL: "https://osis-smpit-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "osis-smpit",
+            storageBucket: "osis-smpit.firebasestorage.app",
+            messagingSenderId: "498358786234",
+            appId: "1:498358786234:web:ba15552c31828d7991ca83",
+            measurementId: "G-SPQJXP82E2"
+        };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const colRef = collection(db, "pengumuman");
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const dbRef = ref(db, 'pengumuman');
 
-    // Login & Logout (Status disimpan di variabel agar bisa diakses fitur Delete)
-    let isAdmin = false;
-    window.login = function() {
-        if(document.getElementById('admin-pass').value === "adminosis") {
-            isAdmin = true;
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('admin-panel').style.display = 'block';
-            renderAnnouncements(); // Re-render untuk munculkan tombol hapus
-        } else { alert("Salah bos!"); }
-    }
-    window.logout = function() {
-        isAdmin = false;
-        document.getElementById('login-form').style.display = 'block';
-        document.getElementById('admin-panel').style.display = 'none';
-        renderAnnouncements();
-    }
+        let isAdmin = false;
 
-    // Tambah Data
-    window.addAnnouncement = async function() {
-        const t = document.getElementById('ann-title').value;
-        const c = document.getElementById('ann-content').value;
-        if(!t || !c) return alert("Isi dulu!");
-        await addDoc(colRef, { judul: t, isi: c, waktu: Date.now() });
-        document.getElementById('ann-title').value = "";
-        document.getElementById('ann-content').value = "";
-    }
-
-    // Hapus Data
-    window.deletePost = async function(id) {
-        if(confirm("Hapus pengumuman ini?")) {
-            await deleteDoc(doc(db, "pengumuman", id));
+        // --- SISTEM LOGIN ---
+        window.login = function() {
+            const pass = document.getElementById('admin-pass').value;
+            if(pass === "adminosis") { // Ganti password di sini
+                isAdmin = true;
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                loadData(); 
+                alert("Selamat datang, Admin!");
+            } else {
+                alert("Password salah! Coba lagi.");
+            }
         }
-    }
 
-    // Ambil Data Real-time
-    function renderAnnouncements() {
-        const q = query(colRef, orderBy("waktu", "desc"));
-        onSnapshot(q, (snapshot) => {
-            const list = document.getElementById('announcement-list');
-            list.innerHTML = snapshot.empty ? "Belum ada pengumuman." : "";
-            snapshot.forEach((d) => {
-                const data = d.data();
-                const date = new Date(data.waktu).toLocaleDateString('id-ID');
-                const deleteBtn = isAdmin ? `<button class="btn-delete" onclick="deletePost('${d.id}')">Hapus</button>` : "";
-                
-                list.innerHTML += `
-                    <div class="announcement-item">
-                        <small style="color:var(--primary)">${date}</small>
-                        <h4>${data.judul}</h4>
-                        <p>${data.isi}</p>
-                        ${deleteBtn}
-                    </div>
-                `;
+        window.logout = function() {
+            isAdmin = false;
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('admin-pass').value = '';
+            loadData();
+        }
+
+        // --- TAMBAH DATA ---
+        window.addAnnouncement = function() {
+            const title = document.getElementById('ann-title').value;
+            const content = document.getElementById('ann-content').value;
+
+            if(!title || !content) {
+                alert("Harap isi semua kolom!");
+                return;
+            }
+
+            const newPostRef = push(dbRef);
+            set(newPostRef, {
+                judul: title,
+                isi: content,
+                waktu: Date.now()
+            }).then(() => {
+                alert("Pengumuman berhasil dipublikasikan!");
+                document.getElementById('ann-title').value = "";
+                document.getElementById('ann-content').value = "";
+            }).catch((err) => {
+                alert("Gagal posting: " + err.message);
             });
-        });
-    }
+        }
 
-    renderAnnouncements();
-</script>
+        // --- HAPUS DATA ---
+        window.deletePost = function(id) {
+            if(confirm("Apakah Anda yakin ingin menghapus pengumuman ini?")) {
+                remove(ref(db, 'pengumuman/' + id))
+                    .then(() => alert("Data terhapus."))
+                    .catch((err) => alert("Gagal hapus: " + err.message));
+            }
+        }
+
+        // --- AMBIL DATA REAL-TIME ---
+        function loadData() {
+            onValue(dbRef, (snapshot) => {
+                const list = document.getElementById('announcement-list');
+                const data = snapshot.val();
+
+                if (!data) {
+                    list.innerHTML = "<p style='text-align:center; color:#94a3b8;'>Belum ada pengumuman terbaru saat ini.</p>";
+                    return;
+                }
+
+                list.innerHTML = "";
+                // Konversi object ke array dan urutkan (Terbaru di atas)
+                const sortedItems = Object.keys(data).map(key => ({
+                    id: key,
+                    ...data[key]
+                })).sort((a, b) => b.waktu - a.waktu);
+
+                sortedItems.forEach((item) => {
+                    const dateObj = new Date(item.waktu);
+                    const dateStr = dateObj.toLocaleDateString('id-ID', { 
+                        weekday: 'long', 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+
+                    const deleteBtn = isAdmin ? `<button class="btn-delete" onclick="deletePost('${item.id}')">🗑️ Hapus Pengumuman</button>` : "";
+                    
+                    list.innerHTML += `
+                        <div class="announcement-item">
+                            <span class="ann-meta">${dateStr}</span>
+                            <h4 class="ann-title">${item.judul}</h4>
+                            <p class="ann-content">${item.isi}</p>
+                            ${deleteBtn}
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        // Jalankan pengambilan data saat halaman dibuka
+        loadData();
+    </script>
 </body>
 </html>
