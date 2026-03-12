@@ -33,12 +33,11 @@
         }
         nav h1 { font-size: 1.1rem; color: var(--primary); font-weight: 800; }
         nav ul { display: flex; list-style: none; gap: 15px; }
-        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
+        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 0.85rem; }
 
         /* --- Header --- */
         header {
-            height: 35vh;
+            height: 30vh;
             background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
                         url('https://images.unsplash.com/photo-1523050853063-915894612264?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -49,45 +48,57 @@
             align-items: center;
             color: white;
             text-align: center;
-            padding: 20px;
         }
-        header h2 { font-size: 1.8rem; letter-spacing: 1px; }
 
         /* --- Layout Content --- */
-        section { padding: 40px 5%; max-width: 1100px; margin: 0 auto; }
+        section { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
         .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        h3 { margin-bottom: 20px; color: var(--primary); border-left: 5px solid var(--primary); padding-left: 15px; }
+        h3 { margin-bottom: 25px; color: var(--primary); border-left: 5px solid var(--primary); padding-left: 15px; }
 
-        /* --- Struktur Grid --- */
+        /* --- Struktur Grid Modern --- */
         .core-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
+        
         .sekbid-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
+
         .member-card {
             background: #f8fafc;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid #e2e8f0;
+            transition: 0.3s;
         }
-        .member-card small { color: var(--primary); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
-        .member-card p { font-weight: 600; margin-top: 5px; color: var(--secondary); }
+        .member-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        
+        .role-tag { color: var(--primary); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .name-tag { font-weight: 700; color: var(--secondary); font-size: 1rem; }
+        
+        /* --- Anggota List --- */
+        .member-list {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #cbd5e1;
+        }
+        .member-list ul { list-style: none; }
+        .member-list li { font-size: 0.9rem; color: #64748b; padding: 2px 0; }
+        .member-list li::before { content: "• "; color: var(--primary); }
 
-        /* --- Announcement & Admin --- */
-        .announcement-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
-        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        /* --- Form & Admin --- */
+        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
         button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
         #admin-panel { display: none; background: #fffbeb; border: 2px dashed #f59e0b; padding: 20px; border-radius: 15px; margin-top: 15px; }
-        .btn-delete { background: var(--danger); font-size: 0.8rem; margin-top: 10px; }
+        .announcement-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
+        .btn-delete { background: var(--danger); font-size: 0.75rem; margin-top: 10px; padding: 5px 12px; }
 
-        footer { text-align: center; padding: 30px; background: var(--secondary); color: white; font-size: 0.9rem; }
-
+        footer { text-align: center; padding: 30px; background: var(--secondary); color: white; font-size: 0.85rem; }
         @media (max-width: 600px) { nav ul { display: none; } }
     </style>
 </head>
@@ -105,80 +116,131 @@
 
 <header id="home">
     <h2>OSIS SMPIT INSAN PERMATA</h2>
-    <p>Website Resmi Organisasi Siswa Intra Sekolah</p>
+    <p>Portal Informasi dan Organisasi Siswa</p>
 </header>
 
 <section id="struktur">
     <h3>Struktur Organisasi</h3>
+    
     <div class="card">
         <div class="core-grid">
             <div class="member-card">
-                <small>Ketua Umum</small>
-                <p>Tsabit</p>
+                <span class="role-tag">Ketua Umum</span>
+                <p class="name-tag">Tsabit</p>
             </div>
             <div class="member-card">
-                <small>Wakil Ketua</small>
-                <p>[Rima]</p>
+                <span class="role-tag">Wakil Ketua</span>
+                <p class="name-tag">[Nama Wakil]</p>
             </div>
             <div class="member-card">
-                <small>Sekretaris</small>
-                <p>[     ]</p>
+                <span class="role-tag">Sekretaris 1</span>
+                <p class="name-tag">[Nama Sekretaris 1]</p>
             </div>
             <div class="member-card">
-                <small>Bendahara</small>
-                <p>[      ]</p>
+                <span class="role-tag">Sekretaris 2</span>
+                <p class="name-tag">[Nama Sekretaris 2]</p>
+            </div>
+            <div class="member-card">
+                <span class="role-tag">Bendahara 1</span>
+                <p class="name-tag">[Nama Bendahara 1]</p>
+            </div>
+            <div class="member-card">
+                <span class="role-tag">Bendahara 2</span>
+                <p class="name-tag">[Nama Bendahara 2]</p>
             </div>
         </div>
 
-        <h4 style="margin: 20px 0 15px; color: var(--secondary);">Seksi Bidang (Sekbid)</h4>
+        <h4 style="margin: 30px 0 15px; color: var(--secondary);">Seksi Bidang (Sekbid)</h4>
         <div class="sekbid-grid">
             <div class="member-card">
-                <small>Sekbid 1: Keagamaan</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 1: Keagamaan</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                        <li>Anggota 3</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="member-card">
-                <small>Sekbid 2: Budi Pekerti</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 2: Budi Pekerti</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="member-card">
-                <small>Sekbid 3: Kenegaraan</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 3: Kenegaraan</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="member-card">
-                <small>Sekbid 4: Kesenian</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 4: Kesenian & Olahraga</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="member-card">
-                <small>Sekbid 5: Demokrasi</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 5: Demokrasi</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="member-card">
-                <small>Sekbid 6: Teknologi & Informasi</small>
-                <p>[Nama Koordinator]</p>
+                <span class="role-tag">Sekbid 6: Teknologi & Informasi</span>
+                <p class="name-tag">[Nama Koordinator]</p>
+                <div class="member-list">
+                    <ul>
+                        <li>Anggota 1</li>
+                        <li>Anggota 2</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <section id="pengumuman">
-    <h3>Pengumuman</h3>
+    <h3>Pengumuman Terbaru</h3>
     <div id="announcement-list" class="card">
-        <p style="text-align: center;">Memuat data...</p>
+        <p style="text-align: center;">Mengkoneksikan ke Firebase...</p>
     </div>
 </section>
 
 <section id="admin">
-    <h3>Dashboard Admin</h3>
+    <h3>Admin Dashboard</h3>
     <div class="card">
         <div id="login-form">
             <input type="password" id="admin-pass" placeholder="Password Admin">
             <button onclick="login()">Login</button>
         </div>
         <div id="admin-panel">
-            <h4 style="margin-bottom: 10px;">Tambah Pengumuman</h4>
-            <input type="text" id="ann-title" placeholder="Judul">
+            <h4>Panel Kontrol</h4>
+            <input type="text" id="ann-title" placeholder="Judul Pengumuman">
             <textarea id="ann-content" placeholder="Isi Pengumuman..." rows="4"></textarea>
-            <button onclick="addAnnouncement()">Posting</button>
+            <button onclick="addAnnouncement()">Publikasikan</button>
             <button onclick="logout()" style="background: #64748b; margin-left: 10px;">Keluar</button>
         </div>
     </div>
@@ -215,7 +277,7 @@
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('admin-panel').style.display = 'block';
             loadData();
-        } else { alert("Salah!"); }
+        } else { alert("Password Salah!"); }
     }
 
     window.logout = function() {
@@ -228,7 +290,7 @@
     window.addAnnouncement = function() {
         const t = document.getElementById('ann-title').value;
         const c = document.getElementById('ann-content').value;
-        if(!t || !c) return alert("Isi dulu!");
+        if(!t || !c) return alert("Wajib diisi!");
 
         const newRef = push(dbRef);
         set(newRef, { judul: t, isi: c, waktu: Date.now() });
@@ -237,7 +299,7 @@
     }
 
     window.deletePost = function(id) {
-        if(confirm("Hapus?")) { remove(ref(db, 'pengumuman/' + id)); }
+        if(confirm("Hapus pengumuman ini?")) { remove(ref(db, 'pengumuman/' + id)); }
     }
 
     function loadData() {
@@ -245,9 +307,9 @@
             const list = document.getElementById('announcement-list');
             list.innerHTML = "";
             const data = snapshot.val();
-            if(!data) { list.innerHTML = "Tidak ada pengumuman."; return; }
+            if(!data) { list.innerHTML = "Belum ada pengumuman."; return; }
 
-            const items = Object.keys(data).map(key => ({ id: key, ...data[key] })).reverse();
+            const items = Object.keys(data).map(key => ({ id: key, ...data[key] })).sort((a,b) => b.waktu - a.waktu);
             items.forEach(item => {
                 const date = new Date(item.waktu).toLocaleDateString('id-ID');
                 const delBtn = isAdmin ? `<button class="btn-delete" onclick="deletePost('${item.id}')">Hapus</button>` : "";
